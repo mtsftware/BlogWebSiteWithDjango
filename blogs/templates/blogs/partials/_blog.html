@@ -1,4 +1,4 @@
-
+{% load static %}
 <div class="mt-4">
     <h4>Blogs</h4>
     {% include 'partials/_filter.html' %}
@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ blog.title }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ blog.subtitle }}</h6>
-                        <a href="{% url 'page_detail' blog.page.slug %}"><img src="{{ blog.page.image.url }}" alt="Page" width="30" height="30"><strong> {{ blog.page.title }}</strong></a>
+                        <a href="{% url 'page_detail' blog.page.slug %}"><img src="{% if blog.page.image %}{{ blog.page.image.url }}{% else %}{% static 'img/menu.jpg' %}{% endif %}" alt="Page" width="30" height="30"><strong> {{ blog.page.title }}</strong></a>
 
 
                         <p class="card-text">
