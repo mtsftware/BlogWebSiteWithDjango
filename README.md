@@ -15,7 +15,7 @@ This website, developed with Django, was created entirely to test and practice m
 1. Clone the Project:
    
   ```bash
-  git clone https://github.com/mtsftware/BlogWebSiteWithDjango
+     git clone https://github.com/mtsftware/BlogWebSiteWithDjango
   ```
 
 2. Create and Activate the Virtual Environment:
