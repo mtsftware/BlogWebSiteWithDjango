@@ -19,18 +19,12 @@ This website, developed with Django, was created entirely to test and practice m
   ```
 
 2. Create and Activate the Virtual Environment:
-   
-  Linux/Macos:
-    ```bash
-    python3 -m venv .venv
-    source .venv/bin/activate
-    ```
 
-  Windows:
-    ```bash
-    python -m venv .venv
-    .\.venv\Scripts\activate
-    ```
+   ```bash
+      python -m venv .venv
+      source .venv/bin/activate  # Linux/macOS
+      .venv\Scripts\activate      # Windows
+   ```
 
 3. Install Dependencies:
 
@@ -62,5 +56,6 @@ This website, developed with Django, was created entirely to test and practice m
    ```bash
     python manage.py runserver
    ```
-   
+
+
 
