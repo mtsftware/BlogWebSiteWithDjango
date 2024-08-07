@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ profile.user.username }} Profile{% endblock title %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">Profile</h1>
+    {% include 'partials/_messages.html' %}
+    <div class="card">
+        <div class="card-body">
+            <div class="text-center mb-4">
+                {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" class="rounded-circle" width="150" height="150" alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'img/menu.jpg' %}" class="rounded-circle" width="150" height="150" alt="Default Profile Picture">
+                {% endif %}
+            </div>
+            <h4 class="card-title text-center">{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
+            {% if user == profile.user %}
+                <div class="mr-auto mb-3 mt-0">
+                    <a href="{% url 'edit_profile' request.user.username %}" class="btn btn-primary">Edit Profile</a>
+                </div>
+            {% endif %}
+            <p class="card-text"><strong>First Name:</strong> {{ profile.user.first_name }}</p>
+            <p class="card-text"><strong>Last Name:</strong> {{ profile.user.last_name }}</p>
+            <p class="card-text"><strong>Job:</strong> {{ profile.job }}</p>
+            <p class="card-text"><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+            <p class="card-text"><strong>Age:</strong> {{ profile.age }}</p>
+            <p class="card-text"><strong>Joined:</strong> {{ profile.user.date_joined }}</p>
+            <p class="card-text"><strong>Bio:</strong> {{ profile.bio }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'ckeditor/ckeditor.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/menu.jpg' %}">
+    {% block style %} {% endblock style %}
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+<body>
+
+        {% include 'partials/_navbar.html' %}
+        {% block content %} {% endblock content %}
+        {% include 'partials/_footer.html' %}
+     
+    <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+    <script src="{% static 'ckeditor/ckeditor/styles.js' %}"></script>
+    <script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+</body>
+</html>

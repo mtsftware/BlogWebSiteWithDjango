@@ -1,0 +1,26 @@
+
+<div class="mt-4">
+    <h4>Blogs</h4>
+    {% include 'partials/_filter.html' %}
+    <div class="row">
+        {% for blog in page_obj %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ blog.subtitle }}</h6>
+                        <a href="{% url 'page_detail' blog.page.slug %}"><img src="{{ blog.page.image.url }}" alt="Page" width="30" height="30"><strong> {{ blog.page.title }}</strong></a>
+
+
+                        <p class="card-text">
+                            {{ blog.content|safe|truncatechars:200 }}{% if blog.content|length > 100 %}...{% endif %}
+                            <a href="{% url 'blog_detail' blog.page.slug blog.slug %}" class="btn btn-primary">Read more</a>
+                        </p>
+                        <p>Author: <a href="{% url 'profile' blog.author.username %}">{{ blog.author.username }}</a></p>
+                        <small>Tags: {% for tag in blog.tags.all %}<a href="{% url 'tags' tag.slug %}">{{ tag.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

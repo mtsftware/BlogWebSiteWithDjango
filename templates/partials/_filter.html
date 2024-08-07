@@ -1,0 +1,25 @@
+{% if not filterNotView %}
+<button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#filter-section" aria-expanded="false" aria-controls="filter-section">
+    Toggle Filter
+</button>
+
+
+<div id="filter-section" class="collapse">
+    <div class="card p-3">
+        <h5 class="card-title">Filter</h5>
+        <form id="filter-form" class="form-row">
+
+            {{ filter.form }}
+            
+            <div class="form-group col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary btn-block">Apply Filters</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% else %}
+    <div class="form-group col-md-4 d-flex align-items-end mt-3">
+        <a href="{% url 'index' %}" class="btn btn-secondary">Back Home</a>
+    </div>
+{% endif %}
+

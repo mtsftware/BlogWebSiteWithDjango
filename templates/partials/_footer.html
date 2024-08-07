@@ -1,0 +1,18 @@
+{% load static %}
+
+<footer class="bg-light text-center text-lg-start mt-auto">
+  <div class="container p-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+              <a href="{% url 'index' %}" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                  <img src="{% static 'img/menu.jpg' %}" width="30" height="30" alt="logo">
+              </a>
+              <span class="mb-3 mb-md-0 text-body-secondary ml-2">&copy; 2024, Testing Project by MTS</span>
+          </div>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+              <li class="ms-3"><a class="text-body-secondary mr-2" href="https://www.linkedin.com/in/muhammed-taha-seher-a020b92a5/"><img src="{% static 'img/linkedin.png' %}" width="24" height="24" alt="Linkedin"></a></li>
+              <li class="ms-3"><a class="text-body-secondary" href="https://github.com/mtsftware"><img src="{% static 'img/github.png' %}" width="24" height="24" alt="Github"></a></li>
+          </ul>
+      </div>
+  </div>
+</footer>

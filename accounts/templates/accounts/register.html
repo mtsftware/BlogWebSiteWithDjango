@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign up {% endblock title %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <form method="POST" class="form-signup w-100" style="max-width: 400px;" novalidate>
+        {% csrf_token %}
+        <a href="{% url 'index' %}">
+        <img class="mb-4 mx-auto d-block" src="{% static 'img/menu.jpg' %}" alt="" width="72" height="72">
+        </a>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Please Sign up</h1>
+
+            {{ form.username }}
+            {{ form.email }}
+            {{ form.password1 }}
+            {{ form.password2 }}
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <p class="mt-3 mb-3 text-muted text-center">&copy; 2024</p>
+
+        {% include 'partials/_messages.html' %}
+    </form>
+</div>
+{% endblock content %}

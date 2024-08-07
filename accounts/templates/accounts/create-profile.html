@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Profile {% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Create Your Profile</h1>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <!-- Kullanıcı form alanlarını manuel olarak işleyelim -->
+        {% for field in user_form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- Profil form alanlarını manuel olarak işleyelim -->
+        {% for field in profile_form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- Genel mesajlar -->
+        {% include 'partials/_messages.html' %}
+
+        <button type="submit" class="btn btn-primary">Save Profile</button>
+    </form>
+
+    <a href="{% url 'index' %}" class="btn btn-secondary mt-3 mb-3">Back to Home</a>
+
+</div>
+{% endblock content %}

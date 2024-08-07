@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ page.title }} {% endblock title %}
+
+
+
+{% block content %}
+    <div class="container mb-5">
+        {% include 'blogs/partials/_page-box.html' %}
+        <a href="{% url 'post' page.slug %}" class="btn btn-secondary">Write Blog</a>
+
+
+        {% if post_view and request.user.is_authenticated %}
+            {% if edit %} <h4 class="mt-5">Edit Post</h4> {% else %} <h4 class="mt-5">Create a Post</h4> {% endif %}
+            {% include 'blogs/partials/_post.html' %}
+        {% else %}
+            {% include 'blogs/partials/_blog.html' %}
+            {% include 'blogs/partials/_paginator.html' %}
+        {% endif%}
+
+    </div>
+{% endblock content %}
+

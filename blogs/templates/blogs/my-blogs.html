@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} My Blogs {% endblock title %}
+
+{% block content %}
+    <div class="container mb-5">
+        <h1 class="text-center">My Blogs Page</h1>
+        {% include 'partials/_messages.html' %}
+        {% include 'blogs/partials/_blog.html' %}
+        {% include 'blogs/partials/_paginator.html' %}
+    </div>
+{% endblock content %}

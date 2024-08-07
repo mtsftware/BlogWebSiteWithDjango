@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">Edit Your Profile</h1>
+
+    {% include 'partials/_messages.html' %}
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h4>User Information</h4>
+                {{ user_form.as_p }}
+            </div>
+            <div class="col-md-6">
+                <h4>Profile Information</h4>
+                {{ profile_form.as_p }}
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <a href="{% url 'profile' user_form.username %}" class="btn btn-secondary mt-3">Back to Profile</a>
+    </div>
+</div>
+{% endblock content %}

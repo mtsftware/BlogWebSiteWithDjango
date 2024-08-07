@@ -1,0 +1,50 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'img/menu.jpg' %}" width="75" height="75" class="d-inline-block" alt="menu.jpg">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-1">
+                <li class="nav-item">
+                    {% include 'partials/_searchbox.html' %}
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item">
+                    <a href="{% url 'about' %}" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'write' %}" class="nav-link">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'page' %}" class="nav-link">Pages</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{% if request.user.profile.profile_picture and request.user.profile.profile_picture.url %}{{ request.user.profile.profile_picture.url }}{% else %}{% static 'img/menu.jpg' %}{% endif %}" width="50" height="50" class="rounded-circle" alt="menu.jpg">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'profile' request.user.username %}">Profile</a>
+                            <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                            <a class="dropdown-item" href="{% url 'my_pages' %}">My Pages</a>
+                            <a class="dropdown-item" href="{% url 'my-blogs' %}">My Blogs</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-success mr-2" href="{% url 'login' %}">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'register' %}">Get started</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>           
+    </div>
+</nav>

@@ -1,0 +1,13 @@
+{% include 'partials/_filter.html' %}
+{% for page in page_obj %}
+    <a href="{% if selectPage %}{% url 'post' page.slug %}{% else %}{% url 'page_detail' page.slug %}{% endif %}" class="list-group-item list-group-item-action">
+        <h5 class="mb-1">{{ page.title }}</h5>
+        <!-- Image bilgisi ekleniyor -->
+        {% if page.image %}
+            <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid mb-2" width="50" height="50">
+        {% endif %}
+        <small>Categories: {% for category in page.category.all %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</small>
+        {% if page.is_private %} <p class="text-danger">Personal</p> {% endif %}
+
+    </a>
+{% endfor %}

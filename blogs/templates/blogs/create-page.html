@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Page {% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Create a New Page</h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ page.as_p }}
+        <div class="text-center mt-5 mb-5">
+            <button type="submit" class="btn btn-primary">Create Page</button>
+        </div>
+        {% include 'partials/_messages.html' %}
+    </form>
+</div>
+{% endblock content %}

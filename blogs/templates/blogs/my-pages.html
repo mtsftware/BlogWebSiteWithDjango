@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} My Pages {% endblock title %}
+
+{% block content %}
+     <div class="container mt-3 mb-3">
+        {% include 'partials/_messages.html' %}
+        <h2 class="mb-3">My Pages</h2>
+        <a href="{% url 'create_page' %}" class="btn btn-primary ml-5 mb-3">Create a New Page</a>
+            <div class="list-group ml-2">
+                {% include 'blogs/partials/_pages.html' %}
+            </div>
+            {% include 'blogs/partials/_paginator.html' %}
+    </div>
+{% endblock content %}

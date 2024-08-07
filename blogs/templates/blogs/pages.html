@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Pages {% endblock title %}
+
+{% block content %}
+<div class="container mb-5">
+        {% include 'partials/_messages.html' %}
+        <div class="row">
+            {% if not selectPage %}
+            <div class="col-12 my-3">
+                <h1 class="text-center">Pages</h1>
+            </div>
+            {% else %}
+            <div class="container my-5">
+                <div class="text-center mb-4">
+                    <h1 class="display-4">Choose The Page You Will Write On</h1>
+                    <h2 class="display-5 my-3">Or</h2>
+                    <a href="{% url 'create_page' %}" class="btn btn-primary btn-lg">Create Your Page</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                    {% include 'blogs/partials/_pages.html' %}
+                </ul>
+            </div>
+        </div>
+        {% include 'blogs/partials/_paginator.html' %}
+    </div>
+
+{% endblock content %}
